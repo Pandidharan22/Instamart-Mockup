@@ -12,6 +12,7 @@ function Cart() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header onCartClick={() => navigate('/cart')} onLogoClick={() => navigate('/')} />
+      <h1 className="sr-only">Your Cart</h1>
 
       {isEmpty ? (
         <EmptyState

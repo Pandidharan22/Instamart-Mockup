@@ -31,6 +31,7 @@ function Checkout() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header onCartClick={() => navigate('/cart')} onLogoClick={() => navigate('/')} />
+      <h1 className="sr-only">Checkout</h1>
 
       <main className="mx-auto grid max-w-5xl gap-6 px-4 py-5 sm:px-6 lg:grid-cols-[1fr_320px]">
         <div className="space-y-6">

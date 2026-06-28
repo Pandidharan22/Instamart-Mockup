@@ -26,7 +26,7 @@ function Header({ onCartClick, onLogoClick }) {
         data-testid="header-cart-btn"
         onClick={onCartClick}
         className="relative shrink-0 rounded-full p-2 text-2xl transition hover:bg-gray-100"
-        aria-label="Open cart"
+        aria-label="View cart"
       >
         🛒
         {totalItems > 0 && (

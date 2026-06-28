@@ -40,7 +40,7 @@ function CartItem({ item }) {
         data-testid={`remove-item-${item.id}`}
         onClick={() => removeFromCart(item.id)}
         className="shrink-0 rounded-lg p-1.5 text-lg transition hover:bg-gray-100"
-        aria-label="Remove item"
+        aria-label={`Remove ${item.name}`}
       >
         🗑️
       </button>
