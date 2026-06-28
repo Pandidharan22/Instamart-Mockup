@@ -30,6 +30,20 @@ This file logs every significant decision made during the build — what was cho
 
 **Outcome:** All data lives in `src/data/products.js` and `src/data/user.js` as plain JS exports. No async, no loading spinners, no failure states. The app is fully predictable from the first paint.
 
-## Decision 4: _Placeholder — to be filled in as the build progresses_
+## Decision 4: Vercel SPA routing — vercel.json rewrite rule
 
-_TBD_
+**Context:** Vite builds a single `index.html` SPA. Vercel serves files statically by default — direct access to `/cart` or `/checkout` returns 404 because no matching file exists.
+
+**Fix:** added `vercel.json` with a catch-all rewrite (`/(.*)` → `/index.html`) so all routes serve `index.html` and React Router handles routing client-side.
+
+**Why it matters for agent testing:** a voice agent navigating directly to any route must get a 200, not a 404. Every URL in the app must be directly addressable.
+
+**Committed to repo** so all future git-based auto-deploys include the fix.
+
+## Decision 5: data-testid naming convention — kebab-case with entity id suffix
+
+All `data-testid` values follow the pattern `{component}-{action/role}-{entity-id}` e.g. `add-to-cart-amul-milk-1l`, `cart-item-amul-milk-1l`, `remove-item-amul-milk-1l`.
+
+**Why:** consistent, predictable, human-readable. A voice agent or test script can construct the expected testid from the product id alone — no guessing or DOM traversal needed.
+
+**Alternative considered:** numeric indices (e.g. `product-card-0`) — rejected because indices change if the product list order changes. Entity ids are stable.
