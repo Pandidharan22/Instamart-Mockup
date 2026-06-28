@@ -15,10 +15,10 @@ function ProductCard({ product }) {
   return (
     <div
       data-testid={`product-card-${product.id}`}
-      className="relative flex flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-sm"
+      className="relative flex h-full flex-col rounded-2xl border border-gray-200 bg-white p-3 shadow-sm transition-shadow hover:shadow-md"
     >
       {/* Image placeholder with category emoji */}
-      <div className="relative flex h-28 items-center justify-center rounded-xl bg-gray-100 text-5xl">
+      <div className="relative flex h-32 items-center justify-center rounded-xl bg-gray-100 text-5xl">
         {emojiFor(product.category)}
         {product.badge && (
           <span className="absolute left-1 top-1 rounded-md bg-orange-500 px-1.5 py-0.5 text-[10px] font-bold text-white">
@@ -35,12 +35,13 @@ function ProductCard({ product }) {
       <p className="mt-2 line-clamp-2 text-sm font-semibold text-gray-800">{product.name}</p>
       <p className="text-xs text-gray-500">{product.unit}</p>
 
-      <div className="mt-1 flex items-center gap-2 text-xs text-gray-500">
-        <span>⏱ {product.deliveryTime}</span>
-        <span>⭐ {product.rating}</span>
+      {/* Delivery time · rating on one line */}
+      <div className="mt-1 text-xs text-gray-500">
+        ⏱ {product.deliveryTime} · ⭐ {product.rating}
       </div>
 
-      <div className="mt-2 flex items-end justify-between gap-2">
+      {/* Price + action pinned to the bottom of the card */}
+      <div className="mt-auto flex items-end justify-between gap-2 pt-3">
         <div>
           <div className="flex items-center gap-1.5">
             <span className="text-sm font-bold text-gray-900">₹{product.price}</span>
@@ -60,7 +61,7 @@ function ProductCard({ product }) {
               type="button"
               data-testid={`add-to-cart-${product.id}`}
               onClick={() => addToCart(product)}
-              className="rounded-lg border border-orange-500 px-3 py-1 text-sm font-semibold text-orange-500 transition hover:bg-orange-50"
+              className="inline-flex min-h-[44px] items-center rounded-xl bg-orange-500 px-4 py-2 font-semibold text-white transition hover:bg-orange-600"
             >
               + Add
             </button>

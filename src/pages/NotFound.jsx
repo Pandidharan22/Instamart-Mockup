@@ -11,7 +11,7 @@ function NotFound() {
         type="button"
         data-testid="go-home-btn"
         onClick={() => navigate('/')}
-        className="mt-6 rounded-xl bg-orange-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
+        className="mt-6 inline-flex min-h-[44px] items-center rounded-xl bg-orange-500 px-4 py-2 font-semibold text-white transition hover:bg-orange-600"
       >
         Go Home
       </button>

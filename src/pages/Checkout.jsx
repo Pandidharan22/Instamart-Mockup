@@ -33,13 +33,13 @@ function Checkout() {
       <Header onCartClick={() => navigate('/cart')} onLogoClick={() => navigate('/')} />
       <h1 className="sr-only">Checkout</h1>
 
-      <main className="mx-auto grid max-w-5xl gap-6 px-4 py-5 sm:px-6 lg:grid-cols-[1fr_320px]">
+      <main className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-4 pt-4 pb-8 sm:px-6 lg:grid-cols-[1fr_320px]">
         <div className="space-y-6">
           <button
             type="button"
             data-testid="back-to-cart-btn"
             onClick={() => navigate('/cart')}
-            className="text-sm font-semibold text-orange-500"
+            className="inline-flex min-h-[44px] items-center rounded-xl border border-orange-500 px-4 py-2 font-semibold text-orange-500 transition hover:bg-orange-50"
           >
             ← Back to Cart
           </button>
@@ -91,7 +91,7 @@ function Checkout() {
         </div>
 
         {/* Order summary */}
-        <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-4 lg:sticky lg:top-5">
+        <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-4 lg:sticky lg:top-20">
           <h2 className="mb-3 text-base font-bold text-gray-800">Order Summary</h2>
           <div className="space-y-2 text-sm text-gray-600">
             <div className="flex justify-between">
@@ -112,7 +112,7 @@ function Checkout() {
             type="button"
             data-testid="place-order-btn"
             onClick={placeOrder}
-            className="mt-4 w-full rounded-xl bg-orange-500 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
+            className="mt-4 flex min-h-[44px] w-full items-center justify-center rounded-xl bg-orange-500 px-4 py-2 font-semibold text-white transition hover:bg-orange-600"
           >
             Place Order
           </button>

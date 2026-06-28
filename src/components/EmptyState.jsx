@@ -1,5 +1,10 @@
 /** Renders a centered empty/zero state with an emoji, message, and optional action button. */
-function EmptyState({ emoji, title, subtitle, actionLabel, onAction }) {
+function EmptyState({ emoji, title, subtitle, actionLabel, onAction, variant = 'primary' }) {
+  const primary =
+    'bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-xl px-4 py-2 transition';
+  const ghost =
+    'border border-orange-500 text-orange-500 hover:bg-orange-50 font-semibold rounded-xl px-4 py-2 transition';
+
   return (
     <div className="flex flex-col items-center justify-center px-6 py-16 text-center">
       <div className="text-6xl">{emoji}</div>
@@ -11,7 +16,7 @@ function EmptyState({ emoji, title, subtitle, actionLabel, onAction }) {
           type="button"
           data-testid="empty-state-action-btn"
           onClick={onAction}
-          className="mt-6 rounded-xl bg-orange-500 px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-orange-600"
+          className={`mt-6 min-h-[44px] ${variant === 'ghost' ? ghost : primary}`}
         >
           {actionLabel}
         </button>

@@ -30,21 +30,28 @@ function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-5 sm:px-6">
+      <main className="mx-auto max-w-6xl px-4 pt-4 pb-8 sm:px-6">
         <h1 className="sr-only">Instamart — Browse Products</h1>
+
+        {/* Slim hero banner */}
+        <div className="mb-6 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-400 px-5 py-4 text-white">
+          <p className="text-lg font-bold leading-tight">Delivery in 10 minutes</p>
+          <p className="text-sm text-orange-50">Fresh groceries at your door</p>
+        </div>
+
         {/* Category grid — only when not searching */}
         {!isSearching && (
           <section className="mb-8">
             <h2 className="mb-3 text-lg font-bold text-gray-800">Shop by Category</h2>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
               {categories.map((category) => (
                 <div
                   key={category.id}
                   data-testid={`category-tile-${category.id}`}
-                  className="flex items-center gap-3 rounded-xl border border-gray-200 bg-white p-4"
+                  className="flex flex-col items-center justify-center gap-1 rounded-2xl bg-white p-4 text-center shadow-sm transition-transform hover:scale-105"
                 >
-                  <span className="text-3xl">{category.emoji}</span>
-                  <span className="text-sm font-semibold text-gray-700">{category.name}</span>
+                  <span className="text-2xl">{category.emoji}</span>
+                  <span className="text-sm font-bold text-gray-700">{category.name}</span>
                 </div>
               ))}
             </div>
@@ -63,11 +70,12 @@ function Home() {
               subtitle={`No products matching "${searchQuery}"`}
               actionLabel="Clear Search"
               onAction={() => setSearchQuery('')}
+              variant="ghost"
             />
           ) : (
             <div
               data-testid="product-grid"
-              className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4"
+              className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4"
             >
               {filtered.map((product) => (
                 <ProductCard key={product.id} product={product} />
